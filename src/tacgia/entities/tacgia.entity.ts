@@ -1,13 +1,18 @@
-import { Entity, PrimaryGeneratedColumn, Column } from 'typeorm'
+import { Sach } from 'src/sach/entities/sach.entity';
+import { Entity, PrimaryGeneratedColumn, Column, OneToMany } from 'typeorm';
 
 @Entity({ name: 'TacGia' })
 export class TacGia {
-    @PrimaryGeneratedColumn()
-    id: number;
+  @PrimaryGeneratedColumn()
+  id: number;
 
-    @Column()
-    ten: string;
+  @Column()
+  ten: string;
 
-    @Column({type: 'text', nullable: true, default: 'không có tiểu sử' })
-    tieu_su: string;
+  @Column({ type: 'text', nullable: true })
+  tieu_su: string;
+
+  // Quan hệ với Sách (1 nhiều)
+  @OneToMany(() => Sach, (sach) => sach.tacGia)
+  sachs: Sach[];
 }

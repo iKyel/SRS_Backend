@@ -20,7 +20,11 @@ export class TheLoaiService {
 
   // Lấy danh sách tất cả thể loại
   async findAll(): Promise<TheLoai[]> {
-    return await this.theLoaiRepository.find();
+    return await this.theLoaiRepository.find({
+      relations: {
+        sachs: true,
+      },
+    });
   }
 
   // Lấy chi tiết một thể loại theo ID

@@ -1,4 +1,5 @@
-import { Entity, PrimaryGeneratedColumn, Column } from 'typeorm';
+import { Sach } from 'src/sach/entities/sach.entity';
+import { Entity, PrimaryGeneratedColumn, Column, OneToMany } from 'typeorm';
 
 @Entity({ name: 'TheLoai' })
 export class TheLoai {
@@ -7,4 +8,8 @@ export class TheLoai {
 
   @Column()
   ten: string;
+
+   // Quan hệ với Sách (1 nhiều)
+   @OneToMany(() => Sach, sach => sach.theLoai)
+   sachs: Sach[];
 }
