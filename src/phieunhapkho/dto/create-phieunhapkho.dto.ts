@@ -1,16 +1,20 @@
 // create-phieunhapkho.dto.ts
-import { IsNotEmpty, IsOptional, IsEnum, IsNumber } from 'class-validator';
+import { IsNotEmpty, IsOptional, IsEnum, IsNumber, IsString, IsDecimal } from 'class-validator';
 
 export class CreatePhieunhapkhoDto {
   @IsNotEmpty()
-  nhanvien: string; // tên của nhân viên tạo phiếu nhập kho
+  @IsString()
+  nhanvien: string; // Tên tài khoản của nhân viên (khóa ngoại)
 
   @IsOptional()
-  daily?: string; // tên của đại lý
+  @IsString()
+  daily?: string; // Tên tài khoản đại lý (khóa ngoại)
 
+  @IsOptional()
+  @IsDecimal()
+  tongtien?: number; // Tổng tiền, mặc định là 0
+
+  @IsOptional()
   @IsEnum(['ChoDuyet', 'DaDuyet', 'Huy'])
-  trangthai: 'ChoDuyet' | 'DaDuyet' | 'Huy'; // Trạng thái phiếu nhập kho
-
-  @IsNumber()
-  tongtien: number; // Tổng tiền trong phiếu nhập kho
+  trangthai?: 'ChoDuyet' | 'DaDuyet' | 'Huy'; // Trạng thái phiếu nhập kho
 }

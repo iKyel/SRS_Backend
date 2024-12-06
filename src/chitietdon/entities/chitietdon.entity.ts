@@ -1,6 +1,7 @@
-import { Entity, PrimaryGeneratedColumn, Column, ManyToOne, JoinColumn } from 'typeorm';
+import { Entity, PrimaryGeneratedColumn, Column, ManyToOne, JoinColumn, OneToMany } from 'typeorm';
 import { Don } from 'src/don/entities/don.entity';
 import { Sach } from 'src/sach/entities/sach.entity';
+import { NhanBan } from 'src/nhanban/entities/nhanban.entity';
 
 @Entity('chitietdon') // Tên bảng trong cơ sở dữ liệu
 export class Chitietdon {
@@ -26,4 +27,7 @@ export class Chitietdon {
   @ManyToOne(() => Sach, (sach) => sach.chitietdon)
   @JoinColumn({ name: 'sach_id' }) // Khóa ngoại đến bảng Sach
   sach: Sach;
+
+  @OneToMany(() => NhanBan, (nhanban) => nhanban.chitietdon)
+  nhanban: NhanBan[]; // Liên kết đến các bản ghi nhân bản
 }

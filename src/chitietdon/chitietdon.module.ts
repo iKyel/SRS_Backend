@@ -14,9 +14,11 @@ import { NhaxuatbanService } from 'src/nhaxuatban/nhaxuatban.service';
 import { Taikhoan } from 'src/taikhoan/entities/taikhoan.entity';
 import { NhaXuatBan } from 'src/nhaxuatban/entities/nhaxuatban.entity';
 import { TheLoai } from 'src/the-loai/entities/the-loai.entity';
+import { NhanBan } from 'src/nhanban/entities/nhanban.entity';
+import { Chitietpnk } from 'src/chitietpnk/entities/chitietpnk.entity';
 
 @Module({
-  imports: [TypeOrmModule.forFeature([Chitietdon, Don, Sach, Taikhoan, TacGia, NhaXuatBan, TheLoai])],
+  imports: [TypeOrmModule.forFeature([Chitietdon, Don, Sach, Taikhoan, TacGia, NhaXuatBan, TheLoai, NhanBan, Chitietpnk])],
   controllers: [ChitietdonController],
   providers: [ChitietdonService, SachService, DonService, TacgiaService, TheLoaiService, NhaxuatbanService],
 })

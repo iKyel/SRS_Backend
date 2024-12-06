@@ -17,10 +17,7 @@ export class Don {
   @Column({ name: 'tentk' })
   ten_tk: string;
 
-  @Column({ type: 'varchar', length: 255 })
-  tenDon: string; // Tên đơn hàng hoặc mô tả
-
-  @Column({ type: 'decimal', precision: 10, scale: 2 })
+  @Column({ type: 'decimal', precision: 10, scale: 2, default: 0 })
   tongTien: number; // Tổng tiền của đơn hàng
 
   @Column({

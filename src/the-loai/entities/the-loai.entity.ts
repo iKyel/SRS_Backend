@@ -9,7 +9,7 @@ export class TheLoai {
   @Column()
   ten: string;
 
-   // Quan hệ với Sách (1 nhiều)
-   @OneToMany(() => Sach, sach => sach.theLoai)
-   sachs: Sach[];
+  // Quan hệ với Sách (1 nhiều)
+  @OneToMany(() => Sach, (sach) => sach.theLoai)
+  sachs: Sach[];
 }

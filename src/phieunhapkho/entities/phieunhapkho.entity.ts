@@ -1,5 +1,6 @@
-import { Entity, Column, PrimaryGeneratedColumn, ManyToOne, JoinColumn } from 'typeorm';
+import { Entity, Column, PrimaryGeneratedColumn, ManyToOne, JoinColumn, OneToMany } from 'typeorm';
 import { Taikhoan } from 'src/taikhoan/entities/taikhoan.entity';
+import { Chitietpnk } from 'src/chitietpnk/entities/chitietpnk.entity';
 
 @Entity('phieunhapkho') // Tên bảng trong cơ sở dữ liệu
 export class PhieuNhapKho {
@@ -28,4 +29,8 @@ export class PhieuNhapKho {
   @ManyToOne(() => Taikhoan, (taikhoan) => taikhoan.phieuNhapKhoDL, { nullable: true })
   @JoinColumn({ name: 'daily' }) // Chỉ định tên cột khóa ngoại cho đại lý
   daily: Taikhoan; // Đại lý liên quan đến phiếu nhập kho (nếu có)
+
+  // Quan hệ OneToMany với Chitietpnk
+  @OneToMany(() => Chitietpnk, (chitietpnk) => chitietpnk.phieuNhapKho)
+  chitietpnk: Chitietpnk[]; // Các chi tiết phiếu nhập kho
 }

@@ -14,8 +14,11 @@ import { Taikhoan } from './taikhoan/entities/taikhoan.entity';
 import { DonModule } from './don/don.module';
 import { ChitietdonModule } from './chitietdon/chitietdon.module';
 import { PhieunhapkhoModule } from './phieunhapkho/phieunhapkho.module';
+import { ChitietpnkModule } from './chitietpnk/chitietpnk.module';
+import { NhanbanModule } from './nhanban/nhanban.module';
 @Module({
   imports: [
+    ConfigModule.forRoot({isGlobal: true}),
     TypeOrmModule.forRoot({
       type: 'mysql',
       host: 'localhost',
@@ -24,7 +27,7 @@ import { PhieunhapkhoModule } from './phieunhapkho/phieunhapkho.module';
       password: 'root',
       database: 'bookstoresrs_db',
       autoLoadEntities: true,
-      synchronize: true,
+      synchronize: false
     }),
     TheLoaiModule,
     TacgiaModule,
@@ -34,6 +37,8 @@ import { PhieunhapkhoModule } from './phieunhapkho/phieunhapkho.module';
     DonModule,
     ChitietdonModule,
     PhieunhapkhoModule,
+    ChitietpnkModule,
+    NhanbanModule,
   ],
   controllers: [],
   providers: [],
